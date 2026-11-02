@@ -4,6 +4,7 @@ import Button from './component/Button';
 import Card from './component/Card';
 import Counter from './component/Counter';
 import Post from './component/ui/Post';
+import Dashboard from './component/ui/dashboard';
 function App() {
   return (
   
@@ -22,7 +23,8 @@ function App() {
     <List/>
 
     */}
-    <Post/>
+    {/* <Post/> */}
+    <Dashboard/>
 
 
     </div>

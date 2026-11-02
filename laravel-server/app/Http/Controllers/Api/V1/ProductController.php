@@ -16,9 +16,9 @@ class ProductController extends Controller
          
         ->paginate(10); 
  
-    return response()->json([
-        'message' => 'Products retrieved successfully',  
-        'data' => ProductResource::collection($products)]); 
+    // Keep the paginator links/meta in the response
+    return ProductResource::collection($products)
+        ->additional(['message' => 'Products retrieved successfully']);
     }
 
    
@@ -27,7 +27,7 @@ class ProductController extends Controller
 
     $nameAndPrice = Product::select('name', 'price')->get(); 
     $productsWithCategory = Product::with('category')->get(); 
-    $productsOrderedByPrice = Product::select('id', 'name') 
+    $productsOrderedByPrice = Product::select('id', 'name', 'price')
     ->orderBy('price', 'asc') 
     ->get(); 
 
@@ -129,6 +129,7 @@ class ProductController extends Controller
             'name_and_price' => $nameAndPrice,
             'products_with_category' => $productsWithCategory,
             'products_ordered_by_price' => $productsOrderedByPrice,
+            'first_five_products' => $firstFiveProducts,
 
             'price_greater_than_or_equal' => $priceGreaterThanOrEqual,
             'electronics' => $electronics,

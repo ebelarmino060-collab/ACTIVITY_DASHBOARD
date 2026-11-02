@@ -11,9 +11,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 });
 
-route::apiResource('/categories', CategoryController::class);
-route::apiResource('/products', ProductController::class);
-
-Route::get('/v1/products/queries', [ProductController::class, 'queries']);
-
+Route::apiResource('/categories', CategoryController::class);
+Route::apiResource('/products', ProductController::class);
+Route::get('/product/queries', [ProductController::class, 'queries']);
 Route::apiResource('/post', MessageController::class);

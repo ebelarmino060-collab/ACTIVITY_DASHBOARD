@@ -23,7 +23,8 @@ class ProductResource extends JsonResource
                     !$request->routeIs('products.index'), 
                     $this->description 
                 ), 
-                'price' => $this->price, 
+                'price' => $this->price,
+                'category' => $this->whenLoaded('category', fn () => $this->category->name),
                 'createdAt' => $this->created_at, 
                 'updatedAt' => $this->updated_at, 
             ], 
@@ -54,7 +55,6 @@ class ProductResource extends JsonResource
                 ), 
             ], 
 
-        ]; 
-        return parent::toArray($request);
+        ];
     }
 }

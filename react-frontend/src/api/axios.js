@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const api = axios.create
+export const api = axios.create
 ({
     baseURL: 'http://localhost:8000/api',
     withCredentials: true,
@@ -10,4 +10,12 @@ const api = axios.create
     },
 });
 
-export default api;
+export const api_v1 = axios.create
+({
+    baseURL: 'http://localhost:8000/api/v1',
+    withCredentials: true,
+    headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+    },
+});
